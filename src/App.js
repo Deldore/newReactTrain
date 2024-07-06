@@ -17,7 +17,7 @@ function App() {
       <form>
         <input type="text" placeholder="Input title"/>
         <input type="text" placeholder="Input body"/>
-        <MyButton disabled={true}cd my>Create</MyButton>
+        <MyButton disabled={true}>Create</MyButton>
       </form>
       <PostList posts={posts} title={'About JS'}/>
     </div>
