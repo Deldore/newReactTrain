@@ -3,6 +3,8 @@ import "./styles/App.css";
 import PostItem from "./components/PostItem";
 import PostList from "./components/PostList";
 import MyButton from "./components/UI/button/MyButton";
+import MyInput from "./components/UI/input/MyInput";
+import PostCreateForm from "./components/PostCreateForm";
 function App() {
 
   const [posts, setPosts] = useState([
@@ -10,16 +12,20 @@ function App() {
     {id: 2, title: 'JS 2', body: 'Desc 2'},
     {id: 3, title: 'JS 3', body: 'Desc 3'},
     {id: 4, title: 'JS 34', body: 'Desc 4'},
-  ])
+  ]);
+
+    const createNewPost = (newPost) => {
+        setPosts([...posts, newPost]);
+    }
+
+    const removePost = (post) => {
+        setPosts(posts.filter(p => p.id !== post.id))
+    }
 
   return (
     <div className="App">
-      <form>
-        <input type="text" placeholder="Input title"/>
-        <input type="text" placeholder="Input body"/>
-        <MyButton disabled>Create</MyButton>
-      </form>
-      <PostList posts={posts} title={'About JS'}/>
+      <PostCreateForm call={createNewPost} posts={posts}/>
+      <PostList posts={posts} delete={removePost} title={'About JS'}/>
     </div>
   );
 }
